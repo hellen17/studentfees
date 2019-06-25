@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
+/*Route::get('/', function () {
     return view('welcome');
-});
+});*/
 Route::get('/', function () {
     return view('home');
 })->name('home');
@@ -26,6 +26,9 @@ Route::get('/fees', function () {
 })->name('fees');
 
 Route::post('/register','RegisterController@register');
+
 Route::post('/fees','FeesController@fees');
+
 Route::get('viewfees','RegisterController@viewStudentstotalfees')->name("viewfees");
+
 Route::get('search', 'FeesController@search')->name('search');

@@ -44,10 +44,12 @@ class RegisterController extends Controller
 }
 
 public function viewStudentstotalfees(){
+
     $records=Student::all()->transform(function($student, $key){
-        $student['fees_total']=$student->fees()->get()->pluck('amount')->sum();
+        $student['fees_total']=$student->fees()->sum('amount');
         return $student;
     });
+
     return view('viewfees',['records'=>$records]);
 }
 

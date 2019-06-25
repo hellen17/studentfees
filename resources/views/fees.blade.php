@@ -53,7 +53,7 @@
         @csrf
   <fieldset>
     <legend><center>Fees Payment</center></legend>
-    <div class="card-body">
+    <div class="card-body  mx-auto" style="width: 670px;">
     <div class="form-group">
       <label for="number">Student Number</label>
       <input type="number" name='sno' class="form-control" id="number" placeholder="Enter Student Number" />

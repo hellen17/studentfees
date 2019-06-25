@@ -66,7 +66,7 @@
         @csrf
   <fieldset>
     <legend><center>Student Registration</center></legend>
-    <div class="card-body">
+    <div  class="card-body mx-auto" style="width: 670px;">
     
     <div class="form-group">
       <label for="name">Student Name</label>
