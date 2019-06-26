@@ -14,6 +14,80 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
       <script type="text/javascript" src="{{ asset('js/app.js') }}" defer></script>
     <link rel="stylesheet" type="text/css" href="{{ asset('css/app.css') }}">
+
+
+      <style>
+        form_main {
+    width: 100%;
+}
+.form_main h4 {
+    font-family: roboto;
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 15px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+.heading {
+    border-bottom: 1px solid #fcab0e;
+    padding-bottom: 9px;
+    position: relative;
+}
+.heading span {
+    background: #9e6600 none repeat scroll 0 0;
+    bottom: -2px;
+    height: 3px;
+    left: 0;
+    position: absolute;
+    width: 75px;
+}   
+.form {
+    border-radius: 7px;
+    padding: 6px;
+}
+.txt[type="text"] {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px 0 10px 5px;
+    width: 100%;
+}
+.txt[type="number"] {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px 0 10px 5px;
+    width: 100%;
+}
+.txt[type="date"] {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px 0 10px 5px;
+    width: 100%;
+}
+.txt_3[type="text"] {
+    margin: 10px 0 0;
+    padding: 10px 0 10px 5px;
+    width: 100%;
+}
+.txt2[type="submit"] {
+    background: #242424 none repeat scroll 0 0;
+    border: 1px solid #4f5c04;
+    border-radius: 25px;
+    color: #fff;
+    font-size: 16px;
+    font-style: normal;
+    line-height: 35px;
+    margin: 10px 0;
+    padding: 0;
+    text-transform: uppercase;
+    width: 30%;
+}
+.txt2:hover {
+    background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+    color: #5793ef;
+    transition: all 0.5s ease 0s;
+}
+      </style>
+
     </head>
         <body>
      <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
@@ -45,7 +119,59 @@
     </div>
   </div>
     </nav>
-<div class="card bg-light text-dark">
+
+
+
+    <div class="container">
+ @if(count($errors->all()))
+            <ul>
+              @foreach($errors->all() as $error)
+              <li class="alert alert-danger">Error {{$error}}</li>
+              @endforeach
+            </ul>
+            @endif
+
+            @if(Session::has('sno'))
+            <p class="alert alert-success">Registration successful</p>
+            @elseif(empty(Session::has('sno')))
+            <p class="alert alert-danger">Please enter the fields</p>
+            @endif
+
+  <div class="row">
+    <div class="col-md-4">
+    <div class="form_main">
+                <h4 class="heading"><strong>STUDENT </strong> REGISTRATION <span></span></h4>
+                <div class="form">
+                <form  method="post" id="contactFrm" name="contactFrm">
+                   @csrf
+                  <div class="form-group">
+                  <label for="name">Student Name</label>
+                    <input type="text" placeholder="Enter Name of Student" value="" name="fname" class="txt">
+                  </div>
+                  <div class="form-group">
+                     <label for="number">Student Number</label>
+                      <input type="number" name='sno' class="txt" id="number" placeholder="Enter Student Number" >
+                    </div>
+                    <div class="form-group">
+                     <label for="address">Address</label>
+                      <input type="text" name='addr' class="txt" id="address" placeholder="Enter Address" >
+                    </div>
+                    <div class="form-group">
+
+                           <label for="date">Date Of Birth</label>
+                        <input type="date" name='dob' class="txt" id="date" placeholder="Enter Date Of Birth" >
+                      </div>
+
+                     <input type="submit" value="submit" name="submit" class="txt2">
+                </form>
+            </div>
+            </div>
+            </div>
+ 
+</div>
+</div>
+
+<!-- <div class="card bg-light text-dark">
   <div class="card-header">
           <div class="container">
           @if(count($errors->all()))
@@ -89,6 +215,6 @@
 </form>
 </div>
 </div>
-</div>
+</div> -->
         </body>
 </html>
